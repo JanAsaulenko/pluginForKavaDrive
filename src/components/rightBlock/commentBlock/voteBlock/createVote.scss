@@ -1,0 +1,12 @@
+.create-commentForm{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.create-commentForm_field{
+  background: aquamarine;
+  height: 40px;
+  width: 50%;
+}

@@ -1,0 +1,16 @@
+.star-list{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.star-list li:hover:before,
+.star-list li:hover ~ li:before{
+  content:'★';
+  position:absolute
+}
+

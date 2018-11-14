@@ -1,0 +1,10 @@
+import React from 'react';
+import {render} from 'react-dom';
+import App from './components/app';
+import rootReducers from './redux/rootReducer';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+const store = createStore(rootReducers, composeWithDevTools(applyMiddleware(thunk)));
+render(<Provider store={store}><App/></Provider>, document.getElementsByClassName('app')[0]);
