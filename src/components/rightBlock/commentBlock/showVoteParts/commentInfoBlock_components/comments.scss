@@ -1,0 +1,16 @@
+.comments{
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+}
+.comments_field{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.comments_field-label{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+}

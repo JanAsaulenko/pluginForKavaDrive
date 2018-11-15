@@ -28,7 +28,6 @@ export default function Stars({mockData, takeResult}) {
 
 
     function chooseHighestStar(event) {
-
         if (event.target.parentNode.tagName === 'UL') {
             checkPreviousElement(event.target);
             let convertedValue = convertValue(event.target.getAttribute('number'));

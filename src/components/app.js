@@ -6,27 +6,13 @@ import './app.scss';
 import {ShowVote} from './rightBlock/commentBlock/showVote';
 import {ShowOnMap} from "./rightBlock/showOnMap/showOnMap";
 import {connect} from 'react-redux'
-class App extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            commentForm:false,
-            showComments:false
-        }
-    }
+import store from "../redux/rootReducer";
 
-    createComment(data){
-        console.log(this.state);
-        this.setState({
-     commentForm:!this.state.commentForm
-        })
-    }
-    showCommentForm(data){
-        this.setState({
-            showComments:!this.state.showComments
-        })
-    }
+
+class App extends Component {
     render() {
+         let openShowCommentsBlock = this.props.openShowCommentsBlock;
+        let openCreateCommentBlock = this.props.openCreateCommentBlock.isOpen;
         let showComments='';
             let{comments} = this.props;
 
@@ -34,14 +20,14 @@ class App extends Component {
             console.log('loading'); //here take dats for loading
         }
         else{
-            showComments = this.state.showComments &&( <ShowVote comments={comments[0]}/>);
+            showComments = openShowCommentsBlock &&( <ShowVote comments={comments[0]}/>);
         }
-        let form = this.state.commentForm && <CreateVote/>;
+        let form = openCreateCommentBlock && <CreateVote/>;
         return (
             <div className='templateWrapper'>
                 <div className='card-info'>
                 <LeftBlock/>
-                <RightBlock commentForm={this.createComment.bind(this)} showComments={this.showCommentForm.bind(this)}/>
+                <RightBlock />
                 </div>
                 {form}
                 {showComments}
@@ -50,6 +36,9 @@ class App extends Component {
     }
 }
 const mapStateToProps = (state)=>{
-    return {comments:state.takeComments}
+    return {
+        openShowCommentsBlock:state.openShowCommentsBlock,
+        openCreateCommentBlock:state.openCreateCommentBlock,
+        comments:state.takeComments}
 };
 export default connect(mapStateToProps)(App)

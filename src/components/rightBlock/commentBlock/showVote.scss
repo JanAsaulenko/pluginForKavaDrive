@@ -1,10 +1,21 @@
 
-
 .commentBlock{
   display:flex;
+  padding: 20px;
 }
 .commentBlock_userName{
-  background:url("../../../images/star.png");
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.commentBlock_userName img{
+  z-index: 2;
+}
+
+.commentBlock_userName_text{
+  position: absolute;
+  z-index: 1;
 }
 .bigStar_image{
   width: 200px;

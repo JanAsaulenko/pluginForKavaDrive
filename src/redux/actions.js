@@ -11,7 +11,7 @@ let comments =[
         stars:2,
         comment:'i hate this coffee'
     }
-]
+];
 
 
 export const asyncUploadPhotos = () =>{
@@ -21,4 +21,17 @@ export const asyncUploadPhotos = () =>{
                 dispatch({type:'UPLOAD_COMMENTS', payload:[...comments]})
             },2000)
         }
-}
+};
+
+export const  openCreateCommentBlock = () =>{
+    return{
+        type:"OPEN_CREATE_COMMENT_BLOCK",
+    }
+};
+export const  openShowCommentsBlock = (event) =>{
+    return{
+        type:"OPEN_SHOW_COMMENTS_BLOCK",
+        event:event
+    }
+};
+
