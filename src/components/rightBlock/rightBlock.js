@@ -1,5 +1,5 @@
 import React from 'react'
-import CommentBlock from "./commentBlock/commentBlock";
+import CommentBlock from "./commentBlock/controlButtons";
 import {ShowOnMap} from './showOnMap/showOnMap';
 import './rightBlock.scss';
 export const RightBlock = ({commentForm, showComments}) => {

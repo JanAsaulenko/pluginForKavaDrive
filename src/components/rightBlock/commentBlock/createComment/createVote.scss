@@ -1,12 +1,19 @@
+@import '../../../basic -styles/basic';
 .create-commentForm{
   position: relative;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .create-commentForm_field{
-  background: aquamarine;
+  background: $color-for-elements;
   height: 40px;
   width: 50%;
+}
+
+.create-commentForm_button{
+  @extend %button-shared;
+  margin-top: 20px;
 }

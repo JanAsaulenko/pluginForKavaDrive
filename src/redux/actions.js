@@ -17,7 +17,6 @@ let comments =[
 export const asyncUploadPhotos = () =>{
         return (dispatch)=>{
             setTimeout(()=>{
-                console.log('tracks');
                 dispatch({type:'UPLOAD_COMMENTS', payload:[...comments]})
             },2000)
         }
@@ -35,3 +34,9 @@ export const  openShowCommentsBlock = (event) =>{
     }
 };
 
+export const pushCommentsIntoStore = (data)=>{
+    return{
+        type:'PUSH_COMMENTS_INTO_STORE',
+        payload:data
+    }
+}

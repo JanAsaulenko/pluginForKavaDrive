@@ -1,0 +1,8 @@
+$font-stack: Helvetica, sans-serif;
+$size-of-font: 18px;
+$color-for-elements: green;
+%button-shared{
+  background: $color-for-elements;
+  padding: 5px;
+  color: white;
+}

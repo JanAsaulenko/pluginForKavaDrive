@@ -1,0 +1,5 @@
+@import '../../basic -styles/basic';
+
+.control_button{
+  @extend  %button-shared
+}

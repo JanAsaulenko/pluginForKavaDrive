@@ -1,17 +1,15 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import {RightBlock} from  './rightBlock/rightBlock';
 import {LeftBlock} from './leftBlock/leftBlock';
-import CreateVote  from './rightBlock/commentBlock/voteBlock/createVote';
+import CreateVote  from './rightBlock/commentBlock/createComment/createVote';
+import {ShowVote} from './rightBlock/commentBlock/showAllComments';
+import {connect} from 'react-redux';
 import './app.scss';
-import {ShowVote} from './rightBlock/commentBlock/showVote';
-import {ShowOnMap} from "./rightBlock/showOnMap/showOnMap";
-import {connect} from 'react-redux'
-import store from "../redux/rootReducer";
 
 
 class App extends Component {
     render() {
-         let openShowCommentsBlock = this.props.openShowCommentsBlock;
+         let openShowCommentsBlock = this.props.openShowCommentsBlock.isOpen;
         let openCreateCommentBlock = this.props.openCreateCommentBlock.isOpen;
         let showComments='';
             let{comments} = this.props;
@@ -20,7 +18,7 @@ class App extends Component {
             console.log('loading'); //here take dats for loading
         }
         else{
-            showComments = openShowCommentsBlock &&( <ShowVote comments={comments[0]}/>);
+            showComments = openShowCommentsBlock && <ShowVote comments={comments[0]}/>;
         }
         let form = openCreateCommentBlock && <CreateVote/>;
         return (

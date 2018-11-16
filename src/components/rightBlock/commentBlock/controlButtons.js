@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import * as actions from '../../../redux/actions';
-
+import './controlButtons.scss'
 class CommentBlock extends Component {
     constructor(props) {
         super(props);
@@ -20,9 +20,9 @@ class CommentBlock extends Component {
     render() {
 
         return (
-            <div>
-                <button onClick={this.createComment}>Залишити відгук</button>
-                <button onClick={this.openList.bind(this)}>Подивитись відгуки</button>
+            <div className='wrapper_right-block_control'>
+                <button className='control_button'  onClick={this.createComment}>Залишити відгук</button>
+                <button className='control_button'  onClick={this.openList.bind(this)}>Подивитись відгуки</button>
             </div>
         )
     }

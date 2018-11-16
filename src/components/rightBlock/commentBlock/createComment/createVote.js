@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './createVote.scss';
 import Stars from './starBlock/stars';
 import {connect} from 'react-redux';
-// import {takeComments} from "../../../../redux/reducers/saveComments";
+import * as actions from '../../../../redux/actions';
+
 class CreateVote extends Component {
     constructor(props) {
         super(props);
@@ -22,43 +23,47 @@ class CreateVote extends Component {
 
     saveData(event) {
         event.preventDefault();
+        let {takeCommentsData} = this.props;
         const userData = {};
-        console.log(this.login.value);
         userData.login = this.login.value;
         userData.stars = this.state.dataForRedux.stars;
         userData.comments = this.comment.value;
-        console.log(userData);
-        /*TODO i have stoped here . Create reducer  and actioncreator for saving comment. And dispatch action to the store*/
+        takeCommentsData(userData)
     }
 
     render() {
-  let{mockData} = this.props;
-
+        let {mockData} = this.props;
         return (
             <div>
                 <form className='create-commentForm' onSubmit={this.saveData.bind(this)}>
-                    <input placeholder='Moisey' className="create-commentForm_field" ref={(input) => {
+                    <label>Логин</label>
+                    <input className="create-commentForm_field" ref={(input) => {
                         this.login = input
                     }}/>
+                    <label>Оцініть заклад</label>
                     {<Stars mockData={mockData} takeResult={this.takeStars.bind(this)}/>}
-                    <textarea  className="create-commentForm_field" ref={(input) => {this.comment = input}} ></textarea>
-                    <button>Save</button>
+                    <label>Ваш коментар</label>
+                    <textarea className="create-commentForm_field" ref={(input) => {
+                        this.comment = input
+                    }}></textarea>
+                    <button className="create-commentForm_button">Зберегти</button>
                 </form>
             </div>
         )
     }
 }
- const mapStateToProps=(state)=>{
+
+const mapStateToProps = (state) => {
     return {
-        mockData:state.mockStarData
+        mockData: state.mockStarData
     }
-}
-//
-// const dispatchMapToProps=(dispatch)=>{
-//     return {
-//         takeCommentsData:(data)=>{
-//             return dispatch(takeCommentsData(data))
-//         }
-//     }
-// }
-export default connect(mapStateToProps)(CreateVote);
+};
+
+const dispatchMapToProps = (dispatch) => {
+    return {
+        takeCommentsData: (data) => {
+            return dispatch(actions.pushCommentsIntoStore(data))
+        }
+    }
+};
+export default connect(mapStateToProps, dispatchMapToProps)(CreateVote);

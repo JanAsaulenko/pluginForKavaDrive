@@ -1,6 +1,6 @@
 import React from 'react'
-import './starBlock.scss';
-import {convertValue} from "./convertValues";
+import './stars.scss';
+import {convertValue} from "../../../../helpers/convertValues";
 
 export default function Stars({mockData, takeResult}) {
 
